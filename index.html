@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Telecom - Especialistas em Fibras Ópticas</title>
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: #FF6600; /* Alterado para laranja */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: white; /* Alterado para branco */
+            font-size: 2.2rem;
+            margin-left: 10px;
+            font-family: 'Proxima Nova', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo-icon {
+            color: white; /* Alterado para branco */
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white; /* Alterado para branco */
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #FFF5EB; /* Cor mais clara para hover */
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white; /* Alterado para branco */
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://st2.depositphotos.com/1000553/5652/v/450/depositphotos_56521947-stock-illustration-bright-swoosh-lines-sparkling-background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #FF6600; /* Alterado de #0066cc para laranja */
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #E55A00; /* Alterado de #0052a3 para laranja mais escuro */
+        }
+        
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        /* Seções */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: #FF6600; /* Alterado de #0066cc para laranja */
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        /* Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: #FF6600; /* Alterado de #0066cc para laranja */
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Sobre - MODIFICADO */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 5px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            /* Adicionado para limitar o tamanho da imagem */
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Diferenciais */
+        .features {
+            background-color: #FFF5EB; /* Alterado de #f5f9ff para tom laranja claro */
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: #FF6600; /* Alterado de #0066cc para laranja */
+            margin-bottom: 15px;
+        }
+        
+        /* Contato */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: #FF6600; /* Alterado de #0066cc para laranja */
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            color: #FF6600; /* Alterado de #0066cc para laranja */
+            font-size: 1.2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Mensagens de feedback */
+        .form-feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .form-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #B34700; /* Alterado de #003366 para laranja escuro */
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #FF9933; /* Alterado de #0066cc para laranja mais claro */
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            /* Ajuste adicional para a imagem em dispositivos móveis */
+            .about-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>LINK</h1>
+            </div>
+            <div class="mobile-menu">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#features">Diferenciais</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Especialistas em Fibras Ópticas</h2>
+            <p>Oferecemos serviços de telecomunicações de alta qualidade na região da Grande Florianópolis, com mão de obra especializada e tecnologia de ponta.</p>
+            <a href="#contact" class="btn">Solicitar Orçamento</a>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções completas em telecomunicações para empresas e residências</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📡</div>
+                    <h3>Instalação de Fibra Óptica</h3>
+                    <p>Instalação profissional de redes de fibra óptica para internet de alta velocidade e estabilidade.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Manutenção e Reparos</h3>
+                    <p>Serviços de manutenção preventiva e corretiva para garantir o funcionamento ideal da sua rede.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📶</div>
+                    <h3>Projetos Personalizados</h3>
+                    <p>Desenvolvemos projetos de infraestrutura de telecomunicações sob medida para suas necessidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre a Link Telecom</h2>
+                <p>Conheça nossa história e compromisso com a qualidade</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A Link Telecom é uma empresa especializada em serviços de telecomunicações, com foco em infraestrutura de fibras ópticas na região da Grande Florianópolis.</p>
+                    <p>Com anos de experiência no mercado, nossa equipe de profissionais qualificados está preparada para atender desde pequenas instalações residenciais até grandes projetos corporativos.</p>
+                    <p>Nosso compromisso é oferecer soluções de alta qualidade, com tecnologia de ponta e atendimento personalizado, garantindo a satisfação total de nossos clientes.</p>
+                </div>
+                <div class="about-image">
+                    <img src="logo.png" alt="Equipe Link Telecom">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Diferenciais</h2>
+                <p>Descubra por que somos a melhor escolha em telecomunicações</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Agilidade</h3>
+                    <p>Atendimento rápido e eficiente para atender suas necessidades no menor tempo possível.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">👨‍🔧</div>
+                    <h3>Mão de Obra Especializada</h3>
+                    <p>Profissionais qualificados e com vasta experiência em fibras ópticas.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>Equipamentos de Qualidade</h3>
+                    <p>Utilizamos apenas equipamentos de primeira linha para garantir a durabilidade dos serviços.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📞</div>
+                    <h3>Suporte Contínuo</h3>
+                    <p>Oferecemos suporte técnico especializado mesmo após a conclusão dos serviços.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Solicite um orçamento ou tire suas dúvidas</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <span class="contact-icon">📍</span>
+                            <p>Grande Florianópolis, Santa Catarina</p>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">📞</span>
+                            <p>(48)991091896</p>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">✉️</span>
+                            <p>Kgemersonmartins@gmail.com</p>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">🕒</span>
+                            <p>Segunda a Sexta: 8h às 18h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <div id="form-feedback" class="form-feedback"></div>
+                    <form id="contact-form" action="https://formspree.io/f/xdkyqbln" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service" name="service" class="form-control">
+                                <option value="">Selecione um serviço</option>
+                                <option value="instalacao">Instalação de Fibra Óptica</option>
+                                <option value="manutencao">Manutenção e Reparos</option>
+                                <option value="projeto">Projeto Personalizado</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Link Telecom</h3>
+                    <p>Especialistas em fibras ópticas na região</p>
+                    <p>da Grande Florianópolis.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Instalação de Fibra Óptica</a></li>
+                        <li><a href="#">Manutenção e Reparos</a></li>
+                        <li><a href="#">Projetos Personalizados</a></li>
+                        <li><a href="#">Consultoria em Telecom</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Link Telecom - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Fechar menu mobile após clicar em um link
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('nav ul').classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Integração com FormsPlee
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const feedback = document.getElementById('form-feedback');
+            const originalText = submitBtn.textContent;
+            
+            // Mostrar estado de carregamento
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            feedback.style.display = 'none';
+            
+            // Coletar dados do formulário
+            const formData = new FormData(this);
+            
+            // Enviar para FormsPlee
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Sucesso
+                    feedback.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                    feedback.className = 'form-feedback form-success';
+                    feedback.style.display = 'block';
+                    this.reset();
+                } else {
+                    // Erro
+                    throw new Error('Erro ao enviar formulário');
+                }
+            })
+            .catch(error => {
+                // Erro de rede ou do servidor
+                feedback.textContent = 'Ocorreu um erro ao enviar sua mensagem. Tente novamente ou entre em contato por telefone.';
+                feedback.className = 'form-feedback form-error';
+                feedback.style.display = 'block';
+            })
+            .finally(() => {
+                // Restaurar estado do botão
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
+        });
+    </script>
+</body>
+</html>
