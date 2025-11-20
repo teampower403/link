@@ -40,6 +40,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
+            position: relative;
         }
         
         .logo {
@@ -83,10 +84,21 @@
         
         .mobile-menu {
             display: none;
-            font-size: 1.5rem;
+            flex-direction: column;
             cursor: pointer;
-            color: white;
             z-index: 1001;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
         }
         
         /* Hero Section */
@@ -419,7 +431,7 @@
             }
             
             .mobile-menu {
-                display: block;
+                display: flex;
             }
             
             .mobile-menu.active span:nth-child(1) {
